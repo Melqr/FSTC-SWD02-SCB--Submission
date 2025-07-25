@@ -20,6 +20,7 @@ import com.bank.mapper.BranchMapper;
 import com.bank.model.BranchDTO;
 import com.bank.service.IBranchService;
 
+import com.bank.exceptions.DemoAppException;
 import lombok.AllArgsConstructor;
 
 //Practical 8 - End to End Spring Boot 
@@ -62,6 +63,7 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/api/branch")
 public class BranchController {
 	
+
     private final IBranchService branchService;
 
     private final BranchMapper branchMapper;
@@ -70,6 +72,7 @@ public class BranchController {
     //Get all Branches
     @GetMapping
     public ResponseEntity<List<BranchDTO>> getAllBranches() {
+    	
         return ResponseEntity.ok(
             branchMapper.toDtoList(branchService.getAllBranches())
         );
@@ -96,6 +99,9 @@ public class BranchController {
     //Create product
     @PostMapping
     public ResponseEntity<BranchDTO> createBranch(@RequestBody BranchDTO branchDto) {
+    	if (branchDto.getBranchName() == null || branchDto.getBranchName().trim().isEmpty()) {
+            throw new DemoAppException("Branch Name cannot be empty");
+        }
         return ResponseEntity.ok(
             branchMapper.toDto(
                 branchService.createBranch(branchMapper.toEntity(branchDto))
