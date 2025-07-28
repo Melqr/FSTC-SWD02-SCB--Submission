@@ -20,15 +20,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ProductEntity implements Serializable {
 
-	// TODO: SpringBoot:Practical 7.3 - Implement the CRUD services below
-	// Implement the CRUD service below
-	// ProductController.java
-	// IProductService.java
-	// ProductServiceImpl.java
-	// IProductRepo.java
-	
-	// Use AccountController as a sample
-		
+
     @Serial
     private static final long serialVersionUID = 1L;
 

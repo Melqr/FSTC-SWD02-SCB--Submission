@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @ActiveProfiles("test") // Use application-test.properties for H2 in-memory DB
-public class BranchSearchTest {
+class BranchSearchTest {
 
     @Autowired
     private IBranchRepo branchRepo;
